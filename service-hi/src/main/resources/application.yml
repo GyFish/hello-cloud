@@ -1,0 +1,14 @@
+
+server:
+  port: 7200
+
+# 必须设置，服务消费者将通过该名称调用所提供的服务
+spring:
+  application:
+    name: SERVICE_HELLO
+
+# 必须设置，向 Eureka 服务器注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7000/eureka

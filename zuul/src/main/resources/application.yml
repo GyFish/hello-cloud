@@ -1,2 +1,14 @@
 server:
   port: 7007
+spring:
+  application:
+    name: ZUUL-PROXY
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7000/eureka
+zuul:
+  routes:
+    all:
+      path: /api/**
+      url: http://localhost:7007

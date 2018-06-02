@@ -19,6 +19,7 @@
         <module>parent</module>
         <module>eureka</module>
         <module>service-hello</module>
+        <module>service-hi</module>
         <module>zuul</module>
     </modules>
 
