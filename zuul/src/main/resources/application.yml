@@ -12,3 +12,15 @@ zuul:
     all:
       path: /api/**
       url: http://localhost:7007
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000  #命令执行超时时间，默认1000ms
+ribbon:
+  ReadTimeout: 500
+  ConnectTimeout: 500
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0

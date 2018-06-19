@@ -9,6 +9,10 @@ spring:
 eureka:
   instance:
     hostname: localhost
+  server:
+    renewal-percent-threshold: 0.5
+    # 自我保护机制
+    enable-self-preservation: true
   client:
     register-with-eureka: false
     fetch-registry: false

@@ -1,4 +1,4 @@
-package com.gy.cloud.zuul;
+package com.gy.cloud.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -14,7 +14,8 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
  * Created by gy on 2018/6/2.
  */
 @Component
-public class TenantRouteFilter extends ZuulFilter {
+public class TenantFilter extends ZuulFilter {
+
     @Override
     public String filterType() {
         return PRE_TYPE;
@@ -33,23 +34,26 @@ public class TenantRouteFilter extends ZuulFilter {
     @Override
     public Object run() {
 
-        System.out.println("3. 路由决策");
+      System.out.println("3. 根据租户选择服务");
 
-        RequestContext ctx = RequestContext.getCurrentContext();
+      RequestContext ctx = RequestContext.getCurrentContext();
 
-        String tenant = String.valueOf(ctx.get("tenant"));
-        String serviceId = "service_hello";
-        String serviceHost = "http://localhost:7100";
+      String tenant = String.valueOf(ctx.get("tenant"));
 
-        if ("geyu".equals(tenant)) {
-            ctx.set(SERVICE_ID_KEY, serviceId);
-//            try {
-//                ctx.setRouteHost(new URL(serviceHost));
-//            } catch (MalformedURLException e) {
-//                e.printStackTrace();
-//            }
-        }
+      String serviceHello = "service_hello";
+      String serviceHi = "service_hi";
 
-        return null;
+      String serviceHost = "http://localhost:7100";
+
+      if ("hello".equals(tenant))
+        ctx.set(SERVICE_ID_KEY, serviceHello);
+
+      if ("hi".equals(tenant))
+        ctx.set(SERVICE_ID_KEY, serviceHi);
+
+      if ("".equals(tenant))
+        ctx.set(SERVICE_ID_KEY, null);
+
+      return null;
     }
 }

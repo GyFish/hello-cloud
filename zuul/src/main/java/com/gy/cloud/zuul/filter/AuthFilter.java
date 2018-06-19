@@ -1,4 +1,4 @@
-package com.gy.cloud.zuul;
+package com.gy.cloud.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -12,7 +12,8 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
  * Created by gy on 2018/6/2.
  */
 @Component
-public class UserInfoFilter extends ZuulFilter {
+public class AuthFilter extends ZuulFilter {
+
     @Override
     public String filterType() {
         return PRE_TYPE;
@@ -30,17 +31,19 @@ public class UserInfoFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-        System.out.println("1. 获取用户信息");
 
+        System.out.println("1. 认证");
+
+        // 获取上下文
         RequestContext ctx = RequestContext.getCurrentContext();
 
-        // 获取 user info
+        String tenant = null;
+
+        // 从请求中获取租户
         HttpServletRequest request = ctx.getRequest();
+        tenant = request.getParameter("tenant");
 
-        String tenant = request.getParameter("tenant");
-
-        // 设置
-        ctx.set("tenant", tenant);
+        ctx.set("tenant", tenant == null ? "" : tenant);
 
         return null;
     }

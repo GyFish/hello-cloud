@@ -1,8 +1,10 @@
-package com.gy.cloud.zuul;
+package com.gy.cloud.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
 
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_TYPE;
 
@@ -10,7 +12,8 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
  * Created by gy on 2018/6/2.
  */
 @Component
-public class AuthFilter extends ZuulFilter {
+public class ThirdFilter extends ZuulFilter {
+
     @Override
     public String filterType() {
         return PRE_TYPE;
@@ -18,7 +21,7 @@ public class AuthFilter extends ZuulFilter {
 
     @Override
     public int filterOrder() {
-        return 2;
+        return 4;
     }
 
     @Override
@@ -29,12 +32,10 @@ public class AuthFilter extends ZuulFilter {
     @Override
     public Object run() {
 
-        System.out.println("2. 校验权限");
+        System.out.println("4. 判断是否第三方接口");
 
         RequestContext ctx = RequestContext.getCurrentContext();
 
-        if (ctx.get("user") == null)
-            return "who are you";
 
         return null;
     }
