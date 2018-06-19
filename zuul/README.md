@@ -1,0 +1,1 @@
+> [参考zuul动态路由demo](https://github.com/lexburner/zuul-gateway-demo)

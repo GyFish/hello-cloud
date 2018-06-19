@@ -1,26 +1,30 @@
 server:
   port: 7007
+
 spring:
   application:
     name: ZUUL-PROXY
+  datasource:
+    url: jdbc:h2:file:classpath:h2/zuul
+    username: root
+    password: 123456
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:7000/eureka
+
 zuul:
   routes:
     all:
       path: /api/**
       url: http://localhost:7007
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 1000  #命令执行超时时间，默认1000ms
+
 ribbon:
-  ReadTimeout: 500
-  ConnectTimeout: 500
-  MaxAutoRetries: 0
-  MaxAutoRetriesNextServer: 0
+  eager-load:
+    enabled: true
+    clients: service_hello
