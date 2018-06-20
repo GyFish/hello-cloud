@@ -5,7 +5,7 @@ spring:
   application:
     name: ZUUL-PROXY
   datasource:
-    url: jdbc:h2:file:classpath:h2/zuul
+    url: jdbc:h2:file:./.h2/zuul
     username: root
     password: 123456
     driver-class-name: org.h2.Driver
@@ -13,10 +13,10 @@ spring:
     console:
       enabled: true
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:7000/eureka
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:7000/eureka
 
 zuul:
   routes:
@@ -28,3 +28,5 @@ ribbon:
   eager-load:
     enabled: true
     clients: service_hello
+  eureka:
+    enabled: false

@@ -37,7 +37,7 @@ public class CustomRouteLocator extends SimpleRouteLocator implements Refreshabl
 
     @Override
     public void refresh() {
-        doRefresh();
+//        doRefresh();
     }
 
     @Override
