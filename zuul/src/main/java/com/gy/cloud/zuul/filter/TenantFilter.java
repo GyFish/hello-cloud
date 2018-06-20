@@ -36,6 +36,9 @@ public class TenantFilter extends ZuulFilter {
 
       System.out.println("3. 根据租户选择服务");
 
+      if (true)
+          return true;
+
       RequestContext ctx = RequestContext.getCurrentContext();
 
       String tenant = String.valueOf(ctx.get("tenant"));

@@ -30,6 +30,5 @@ application.pid
 logs
 **/logs
 **/*.pid
-**/*.db
 
 .idea/*
