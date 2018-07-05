@@ -1,0 +1,22 @@
+server:
+  port: 666
+
+spring:
+  application:
+    name: gateway
+  datasource:
+    url: jdbc:mysql://mysql.dc:3306/geyu
+    username: mysql
+    password: MySql@123
+    driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    gateway:
+      routes:
+        - id: greet_hello
+          uri: http://127.0.0.1:7100/greet
+          predicates:
+          - Path=/hello/**
+        - id: greet_hi
+          uri: http://127.0.0.1:7200/greet
+          predicates:
+          - Path=/hi/**

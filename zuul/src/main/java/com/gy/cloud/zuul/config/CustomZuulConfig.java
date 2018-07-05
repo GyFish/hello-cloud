@@ -24,9 +24,10 @@ public class CustomZuulConfig {
 
     @Bean
     public CustomRouteLocator routeLocator() {
-        CustomRouteLocator routeLocator = new CustomRouteLocator(this.server.getServletPrefix(), this.zuulProperties);
-        routeLocator.setJdbcTemplate(jdbcTemplate);
-        return routeLocator;
+//        CustomRouteLocator routeLocator = new CustomRouteLocator(this.server.getServletPrefix(), this.zuulProperties);
+//        routeLocator.setJdbcTemplate(jdbcTemplate);
+//        return routeLocator;
+        return null;
     }
 
 }
