@@ -38,6 +38,7 @@ public class GatewayController implements ApplicationEventPublisherAware {
 
   @PostMapping("/refresh")
   public Mono<Void> refresh() {
+    System.out.println("/refresh...");
     this.publisher.publishEvent(new RefreshRoutesEvent(this));
     return Mono.empty();
   }

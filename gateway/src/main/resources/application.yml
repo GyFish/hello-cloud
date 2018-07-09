@@ -12,11 +12,11 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: greet_hello
-          uri: http://127.0.0.1:7100/greet
-          predicates:
-          - Path=/hello/**
-        - id: greet_hi
-          uri: http://127.0.0.1:7200/greet
-          predicates:
-          - Path=/hi/**
+#        - id: greet_hello
+#          uri: http://127.0.0.1:7100/greet
+#          predicates:
+#          - Path=/hello/**
+#        - id: greet_hi
+#          uri: http://127.0.0.1:7200/greet
+#          predicates:
+#          - Path=/hi/**

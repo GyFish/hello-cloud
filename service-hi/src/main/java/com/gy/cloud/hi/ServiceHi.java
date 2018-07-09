@@ -22,7 +22,7 @@ public class ServiceHi {
     @Value("${server.port}")
     private int serverPort = 0;
 
-    @GetMapping("/api/hello")
+    @GetMapping("/greet")
     public String hello() {
         System.out.println("/hello");
         return "Hi, Spring Cloud! My port is " + String.valueOf(serverPort);
