@@ -10,5 +10,5 @@ spring:
 # 必须设置，向 Eureka 服务器注册
 #eureka:
 #  client:
-#    service-url:
+#    userdetails-url:
 #      defaultZone: http://localhost:7000/eureka
