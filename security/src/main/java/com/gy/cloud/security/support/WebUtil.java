@@ -24,4 +24,11 @@ public class WebUtil {
     return root.toString();
   }
 
+  public static String result(int code, Object object) {
+    JSONObject root = new JSONObject();
+    root.put("code", code);
+    root.put("data", object);
+    return root.toString();
+  }
+
 }

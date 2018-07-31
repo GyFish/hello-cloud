@@ -12,15 +12,15 @@ import java.io.IOException;
 
 public class CustomAccessDeniedHandler implements AuthenticationEntryPoint, AccessDeniedHandler {
 
-  // NoLogged Access Denied
+  // no auth
   @Override
   public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
-    WebUtil.responseText(response, WebUtil.resultOk(authException.getMessage()));
+    WebUtil.responseText(response, WebUtil.result(401, authException.getMessage()));
   }
 
-  // Logged Access Denied
+  // Access is denied
   @Override
   public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException {
-    WebUtil.responseText(response, WebUtil.resultOk(accessDeniedException.getMessage()));
+    WebUtil.responseText(response, WebUtil.result(401, accessDeniedException.getMessage()));
   }
 }
