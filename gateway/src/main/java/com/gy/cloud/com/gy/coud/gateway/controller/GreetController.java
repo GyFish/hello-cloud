@@ -11,11 +11,5 @@ public class GreetController {
     System.out.println("/hello");
     return "Hei, I am the gateway!";
   }
-//
-//  @GetMapping("/hello/greet")
-//  public String hello() {
-//    System.out.println("/hello");
-//    return "Hello, I am the gateway!";
-//  }
 
 }

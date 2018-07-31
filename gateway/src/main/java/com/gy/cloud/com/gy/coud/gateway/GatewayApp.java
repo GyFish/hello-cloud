@@ -13,13 +13,4 @@ public class GatewayApp {
     SpringApplication.run(GatewayApp.class, args);
   }
 
-//  @Bean
-//  public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
-//    return builder.routes()
-//            .route(t -> t.path("/api/**")
-//                    .and()
-//                    .uri("http://localhost:7100"))
-//            .build();
-//  }
-
 }

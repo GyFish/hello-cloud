@@ -1,11 +1,10 @@
 package com.gy.cloud.com.gy.coud.gateway.route;
 
 import com.gy.cloud.com.gy.coud.gateway.dao.RouteDao;
-import com.gy.cloud.com.gy.coud.gateway.domain.DCRouteDefinition;
+import com.gy.cloud.com.gy.coud.gateway.domain.CustomRouteDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -14,15 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class MySQLRouteDefinitionRepository implements RouteDefinitionRepository {
+public class CustomRouteDefinitionRepository implements RouteDefinitionRepository {
 
-  private List<RouteDefinition> routeDefines;
-
-  public MySQLRouteDefinitionRepository() {
-
-//    routeDefines = new ArrayList();
-//    RouteDefinition routeDefinition = new RouteDefinition("greet_hello=http://127.0.0.1:7100/greet, Path=/hello/**");
-//    routeDefines.add(routeDefinition);
+  public CustomRouteDefinitionRepository() {
   }
 
 
@@ -36,6 +29,26 @@ public class MySQLRouteDefinitionRepository implements RouteDefinitionRepository
     return Flux.fromIterable(routeDefinitions);
   }
 
+  public List<RouteDefinition> findAll() {
+
+    List<CustomRouteDefinition> customRouteDefinitions = routeDao.findAll();
+
+    return convert2RouteDefinition(customRouteDefinitions);
+  }
+
+  private List<RouteDefinition> convert2RouteDefinition(List<CustomRouteDefinition> customRouteDefinitions) {
+
+    List<RouteDefinition> defines = new ArrayList<>();
+
+    customRouteDefinitions.forEach(dc -> {
+      defines.add(new RouteDefinition(dc.getId() + "=" + dc.getUri() + ", " + dc.getPredicates()));
+    });
+
+    return defines;
+  }
+
+
+
   @Override
   public Mono<Void> save(Mono<RouteDefinition> route) {
     return null;
@@ -44,24 +57,6 @@ public class MySQLRouteDefinitionRepository implements RouteDefinitionRepository
   @Override
   public Mono<Void> delete(Mono<String> routeId) {
     return null;
-  }
-
-  public List<RouteDefinition> findAll() {
-
-    List<DCRouteDefinition> dcRouteDefinitions = routeDao.findAll();
-
-    return convert2RouteDefinition(dcRouteDefinitions);
-  }
-
-  private List<RouteDefinition> convert2RouteDefinition(List<DCRouteDefinition> dcRouteDefinitions) {
-
-    List<RouteDefinition> defines = new ArrayList<>();
-
-    dcRouteDefinitions.forEach(dc -> {
-      defines.add(new RouteDefinition(dc.getId() + "=" + dc.getUri() + ", " + dc.getPredicates()));
-    });
-
-    return defines;
   }
 
 }

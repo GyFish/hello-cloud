@@ -3,7 +3,7 @@ package com.gy.cloud.com.gy.coud.gateway.domain;
 import lombok.Data;
 
 @Data
-public class DCRouteDefinition {
+public class CustomRouteDefinition {
 
   private String id;
 

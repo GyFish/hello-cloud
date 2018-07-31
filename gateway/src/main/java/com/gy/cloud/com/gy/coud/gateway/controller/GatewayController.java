@@ -32,7 +32,7 @@ public class GatewayController implements ApplicationEventPublisherAware {
   }
 
   @Override
-  public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+  public void setApplicationEventPublisher(ApplicationEventPublisher publisher) {
     this.publisher = publisher;
   }
 
