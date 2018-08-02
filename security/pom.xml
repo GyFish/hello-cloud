@@ -12,7 +12,6 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.gy.cloud</groupId>
     <artifactId>security</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 

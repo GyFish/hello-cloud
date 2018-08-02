@@ -28,4 +28,11 @@ public class ServiceHi {
         return "Hi, Spring Cloud! My port is " + String.valueOf(serverPort);
     }
 
+
+    @GetMapping("/home")
+    public String home() {
+        System.out.println("/home");
+        return "home...";
+    }
+
 }
