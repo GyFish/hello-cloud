@@ -6,6 +6,10 @@ server:
 spring:
   application:
     name: SERVICE_HELLO
+  cloud:
+    consul:
+      discovery:
+        service-name: service-hello
 
 # 必须设置，向 Eureka 服务器注册
 #eureka:
