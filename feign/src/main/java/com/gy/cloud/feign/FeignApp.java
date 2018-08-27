@@ -22,7 +22,7 @@ public class FeignApp {
   @GetMapping("/hello")
   public String index(String name) {
 
-    return helloService.hello("");
+    return helloService.hello(name);
     //    return "hello " + name + "，this is feign app";
   }
 }
