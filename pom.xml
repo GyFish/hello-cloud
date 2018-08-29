@@ -18,6 +18,8 @@
         <module>security</module>
         <module>consul</module>
         <module>common</module>
+        <module>feign</module>
+        <module>mongo</module>
     </modules>
 
 </project>
