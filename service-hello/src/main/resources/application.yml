@@ -2,6 +2,7 @@
 server:
   port: 7100
 
+
 # 必须设置，服务消费者将通过该名称调用所提供的服务
 spring:
   application:
