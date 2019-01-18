@@ -2,18 +2,11 @@ package com.gy.cloud.com.gy.coud.gateway.config;
 
 import com.gy.cloud.com.gy.coud.gateway.filter.AuthFilter;
 import com.gy.cloud.com.gy.coud.gateway.filter.ElapsedFilter;
-import com.gy.cloud.com.gy.coud.gateway.filter.RewriteFilter;
-import com.gy.cloud.com.gy.coud.gateway.route.CustomRouteDefinitionRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class GatewayConfig {
-
-  @Bean
-  public CustomRouteDefinitionRepository mySQLRouteDefinitionRepository() {
-    return new CustomRouteDefinitionRepository();
-  }
 
   @Bean
   public ElapsedFilter elapsedFilter(){
@@ -25,9 +18,5 @@ public class GatewayConfig {
     return new AuthFilter();
   }
 
-  @Bean
-  public RewriteFilter rewriteFilter() {
-    return  new RewriteFilter();
-  }
 
 }
